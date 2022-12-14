@@ -1,0 +1,27 @@
+<button type="button" style="background-color: #0F3971;" (click)="openModal()" class="float-right btn btn-primary mb-2">Nuevo</button>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Carrera</th>
+      <th>Ciclo</th>
+      <th colspan="2" class="text-center">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let carrera of carreras; index as i">
+      <td>{{i+1}}</td>
+      <td>{{carrera.carrNombre}}</td>
+      <td>{{carrera.carrCiclo}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-warning"> <img src=".././../../../assets/img/pencil-square.svg"(click)="openModalEdit(carrera)" ></button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger " ><img src="../../../../assets/img/trash3.svg"  alt ="bootstrap" width="15" height="15" (click)="onDelete(carrera)" ></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

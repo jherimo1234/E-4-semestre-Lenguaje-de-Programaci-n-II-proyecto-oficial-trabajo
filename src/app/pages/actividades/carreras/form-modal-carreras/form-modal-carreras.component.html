@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Carrera</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmCarrera">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese la Carrera</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Carrera</mat-label>
+          <input autocomplete="off" formControlName="carrNombre" matInput placeholder="Ingrese la carrera">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el ciclo</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="carrCiclo">
+          <option [value]="null">Seleccione una opción</option>
+          <option value="1er Ciclo">1er Ciclo</option>
+          <option value="2do Ciclo">2do Ciclo</option>
+          <option value="3er Ciclo">3er Ciclo</option>
+          <option value="4to Ciclo">4to Ciclo</option>
+          <option value="5to Ciclo">5to Ciclo</option>
+          <option value="6to Ciclo">6to Ciclo</option>
+          <option value="7mo Ciclo">7mo Ciclo</option>
+          <option value="8vo Ciclo">8vo Ciclo</option>
+          <option value="9no Ciclo">9no Ciclo</option>
+          <option value="10mo Ciclo">10mo Ciclo</option>
+          <option value="ciudadano">ciudadano</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmCarrera.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmCarrera.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>
+<pre>{{frmCarrera.value | json}}</pre>

@@ -1,0 +1,24 @@
+<button type="button" style="background-color: #0F3971;" (click)="openModal()" class="float-right btn btn-primary mb-2">Nuevo</button>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th colspan="2" class="text-center">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tipoPersona of tipoPersonas; index as i">
+      <td>{{i+1}}</td>
+      <td>{{tipoPersona.tipeNombre}}</td>
+      <td class="text-center">
+        <button type="button" (click)="openModalEdit(tipoPersona)" class="btn btn-warning">Editar</button>
+      </td>
+      <td class="text-center">
+        <button type="button" (click)="onDelete(tipoPersona)" class="btn btn-danger">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

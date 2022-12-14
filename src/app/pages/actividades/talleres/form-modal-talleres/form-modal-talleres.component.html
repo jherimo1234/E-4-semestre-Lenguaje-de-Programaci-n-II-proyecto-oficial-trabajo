@@ -1,0 +1,72 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Taller</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmTaller">
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Programa</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="progId">
+          <option *ngFor="let programa of programas" [value]="programa.progId">
+            {{programa.progNombre}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el tema</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input autocomplete="off" formControlName="tallTema" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese la hora</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="time" autocomplete="off" formControlName="tallHora" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese la fecha</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="date" autocomplete="off" formControlName="tallFecha" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese la dirección del taller</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="text" autocomplete="off" formControlName="tallDireccion" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el lugar del taller</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input type="text" autocomplete="off" formControlName="tallLugar" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmTaller.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmTaller.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

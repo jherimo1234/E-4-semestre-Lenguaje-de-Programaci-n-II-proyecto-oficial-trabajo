@@ -1,0 +1,35 @@
+<button type="button" style="background-color: #0F3971;" (click)="openModal()" class="float-right btn btn-primary mb-2">Nuevo</button>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>DNI</th>
+      <th>Telefono</th>
+      <th>Tipo persona</th>
+      <th>Carrera</th>
+      <th colspan="2" class="text-center">Opciones</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let persona of personas; index as i">
+      <td>{{i+1}}</td>
+      <td>{{persona.persNombres}}</td>
+      <td>{{persona.persApPaterno}} {{persona.persApMaterno}}</td>
+      <td>{{persona.persDni}}</td>
+      <td>{{persona.persTelefono}}</td>
+      <td>{{persona.tipoPersona.tipeNombre}}</td>
+      <td>{{persona.carrera.carrNombre}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-warning"> <img src=".././../../../assets/img/pencil-square.svg" (click)="openModalEdit(persona)"></button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger " ><img src="../../../../assets/img/trash3.svg"  alt ="bootstrap" width="15" height="15"   (click)="onDelete(persona)"></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

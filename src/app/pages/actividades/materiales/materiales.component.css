@@ -1,0 +1,8 @@
+table{
+  table-layout: fixed;
+}
+
+.th-link, .td-link {
+  width: 300px;
+  word-wrap: break-word;
+}

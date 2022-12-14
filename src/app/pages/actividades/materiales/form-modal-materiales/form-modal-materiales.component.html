@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Material</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmMaterial">
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Título</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Titulo del material</mat-label>
+          <input type="text" autocomplete="off" formControlName="mateNombre" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Link</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Ingrese link</mat-label>
+          <input type="text" autocomplete="off" formControlName="mateDescripcion" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Tipo de material</label>
+      <div class="col-sm-9">
+        <mat-radio-group formControlName="mateTipoMaterial" aria-label="Seleccione una opción">
+          <mat-radio-button value="PPT">PPT </mat-radio-button>
+          <mat-radio-button value="Documento">Documento </mat-radio-button>
+          <mat-radio-button value="Video">Video </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Asignar Taller</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="tallId">
+          <option *ngFor="let talleres of taller" [value]="talleres.tallId">
+            {{talleres.tallTema}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmMaterial.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmMaterial.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

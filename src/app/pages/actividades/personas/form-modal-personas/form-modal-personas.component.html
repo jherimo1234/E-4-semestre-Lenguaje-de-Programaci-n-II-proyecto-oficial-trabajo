@@ -1,0 +1,88 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Persona</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmPersona">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Nombre</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nombre completos</mat-label>
+          <input autocomplete="off" formControlName="persNombres" matInput >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el apellido paterno</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Apellido Paterno</mat-label>
+          <input autocomplete="off" formControlName="persApPaterno" matInput >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el apellido materno</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Apellido materno</mat-label>
+          <input autocomplete="off" formControlName="persApMaterno" matInput >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese su DNI</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>DNI</mat-label>
+          <input type="number" autocomplete="off" formControlName="persDni" matInput >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese su telefono</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Telefono</mat-label>
+          <input type="number" autocomplete="off" formControlName="persTelefono" matInput >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Tipo de persona</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="tipeId">
+          <option *ngFor="let tipoPersona of tipoPersonas" [value]="tipoPersona.tipeId">
+            {{tipoPersona.tipeNombre}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Carrera</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="carrId">
+          <option *ngFor="let carrera of carreras" [value]="carrera.carrId">
+            {{carrera.carrNombre}}  {{carrera.carrCiclo}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<pre>{{frmPersona.value | json}}</pre>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmPersona.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmPersona.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

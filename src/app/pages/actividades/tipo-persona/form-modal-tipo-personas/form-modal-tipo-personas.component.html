@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Talleres</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmTipoPersona">
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Ingrese el tipo de persona</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Tipo de persona</mat-label>
+          <input type="text" autocomplete="off" formControlName="tipeNombre" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmTipoPersona.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmTipoPersona.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

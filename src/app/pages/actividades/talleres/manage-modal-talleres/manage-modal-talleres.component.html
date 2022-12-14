@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Taller</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmPersonaTaller">
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Persona</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="persona">
+          <option *ngFor="let persona of personas" [value]="persona.persId">
+            {{persona.persNombres}} {{persona.persApPaterno}} DNI: {{persona.persDni}} Carrera: {{persona.carrera.carrNombre}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Taller</label>
+      <div class="col-sm-9">
+        <select   class="form-control" formControlName="taller">
+          <option *ngFor="let taller of talleres" [value]="taller.tallId">
+            {{taller.tallTema}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+  </form>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmPersonaTaller.invalid" *ngIf="title =='Gestionar'" class="btn btn-primary" (click)="assign()">Guardar</button>
+</div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tipo persona</th>
+        <th>Carrera</th>
+        <th>Taller</th>
+        <th>Asistencia</th>
+        <th>Opcion</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let personaTaller of personasTaller; index as i" >
+      <tr *ngIf="personaTaller.taller.tallId == tallId">
+        <td>{{i+1}}</td>
+        <td>{{personaTaller.persona.persNombres}}</td>
+        <td>{{personaTaller.persona.tipoPersona.tipeNombre}}</td>
+        <td>{{personaTaller.persona.carrera.carrNombre}}</td>
+        <td>{{personaTaller.taller.tallTema}}</td>
+        <td>{{personaTaller.petaAsistencia}}</td>
+        <td class="text-center">
+          <button type="button" (click)="onAsistio(personaTaller)" class="btn btn-warning" style="background-color: #2BDE07;" *ngIf="personaTaller.petaAsistencia =='F'">Asistio</button>
+          <button type="button" (click)="onFalto(personaTaller)" class="btn btn-danger" *ngIf="personaTaller.petaAsistencia =='A'" >Falta</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

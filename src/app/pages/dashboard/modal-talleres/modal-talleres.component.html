@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} del Taller {{item.tallTema}}</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h3>Reporte de asistencia de los ciudadanos de Quinta Helena</h3>
+  <h5>F = Falto y A = Asistio</h5>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Telefono</th>
+        <th>Taller</th>
+        <th>Asistencia</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let personaTaller of personasTaller; index as i" >
+      <tr *ngIf="personaTaller.taller.tallId == tallId;">
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{i+1}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.persona.persNombres}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.persona.persApPaterno}} {{personaTaller.persona.persApMaterno}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.persona.persDni}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.persona.persTelefono}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.taller.tallTema}}</td>
+        <td *ngIf="personaTaller.persona.carrera.carrNombre == 'Ciudadano';">{{personaTaller.petaAsistencia}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

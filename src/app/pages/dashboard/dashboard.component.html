@@ -1,0 +1,12 @@
+<h1>Talleres</h1>
+<div class="card" *ngFor="let taller of talleres">
+
+  <div class="card-body">
+    <h3 class="card-title">{{taller.tallTema}}</h3>
+    <a (click)="openModalCiudadanos(taller)" style="background-color: #0F3971;" class="btn btn-primary card-link">Asistencia <br> de los ciudadanos</a>
+    <a (click)="openModalEstudiantes(taller)" style="background-color: #0F3971;" class="btn btn-primary card-link">Asistencia <br> de los estudiantes</a>
+    <a (click)="openModalEncuestas(taller)" style="background-color: #0F3971;" class="btn btn-primary card-link">Reporte <br> de encuestas</a>
+  </div>
+
+</div>
+<br>

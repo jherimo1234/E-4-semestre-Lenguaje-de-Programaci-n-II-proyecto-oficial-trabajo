@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} del Taller</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h3>Reporte de encuestas del taller {{tallTema}}</h3>
+  <h5>Las preguntas fueron:</h5>
+  <h5>1. ¿Que te parecio el desarrollo del taller?</h5>
+  <h5>2. ¿Que trato recibiste de los organizadores del taller?</h5>
+  <h5>3. ¿Que sugerencias nos darias para mejorar?</h5>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Respuesta 1</th>
+        <th>Respuesta 2</th>
+        <th>Respuesta 3</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let encuesta of encuestas; index as i" >
+      <tr *ngIf="encuesta.taller.tallTema == tallTema;">
+        <td>{{i+1}}</td>
+        <td>{{encuesta.encuRespuestaUno}}</td>
+        <td>{{encuesta.encuRespuestaDos}}</td>
+        <td>{{encuesta.encuRespuestaTres}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

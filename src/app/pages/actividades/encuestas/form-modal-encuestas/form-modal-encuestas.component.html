@@ -1,0 +1,69 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}} Encuesta</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">x</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="frmEncuesta">
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Taller</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="tallId">
+          <option *ngFor="let taller of talleres" [value]="taller.tallId">
+            {{taller.tallTema}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Asistencia</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="persId">
+          <option *ngFor="let persona of personas" [value]="persona.persId">
+            {{persona.persNombres}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <br>
+
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">¿Asistió?</label>
+      <div class="col-sm-9">
+        <mat-radio-group formControlName="encuRespuestaUno" aria-label="Seleccione una opción">
+          <mat-radio-button value=".">.</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">¿No Asistió?</label>
+      <div class="col-sm-9">
+        <mat-radio-group formControlName="encuRespuestaDos" aria-label="Seleccione una opción">
+          <mat-radio-button value=".">.</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Observaciones</label>
+      <div class="col-sm-9">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Ingrese su observación</mat-label>
+          <input type="text" autocomplete="off" formControlName="encuRespuestaTres" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmEncuesta.invalid" *ngIf="title =='Nuevo'" class="btn btn-primary" (click)="save()">Guardar</button>
+  <button type="button" style="background-color: #0F3971;" [disabled]="frmEncuesta.invalid" *ngIf="title =='Modificar'" class="btn btn-primary" (click)="update()">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>

@@ -1,0 +1,34 @@
+<button type="button" style="background-color: #0F3971;" (click)="openModal()" class="float-right btn btn-primary mb-2">Nuevo</button>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Programa</th>
+      <th>Taller</th>
+      <th>Fecha</th>
+      <th>Lugar</th>
+      <th colspan="3" class="text-center">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let taller of talleres; index as i">
+      <td>{{i+1}}</td>
+      <td>{{taller.programa.progNombre}}</td>
+      <td>{{taller.tallTema}}</td>
+      <td>{{taller.tallFecha | date:'dd/MM/YYYY'}}</td>
+      <td>{{taller.tallLugar}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-warning"> <img src=".././../../../assets/img/pencil-square.svg"(click)="openModalEdit(taller)"></button>
+      </td>
+      <td class="text-center">
+        <button type="button" style="background-color: #00ff77;" (click)="openModalGestionar(taller)" class="btn btn-danger">Asistencia</button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-danger " ><img src="../../../../assets/img/trash3.svg"  alt ="bootstrap" width="15" height="15"   (click)="onDelete(taller)"></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
